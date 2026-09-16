@@ -1,0 +1,23 @@
+[tasks]
+prove
+bug
+
+[options]
+prove: mode prove
+bug:   mode bmc
+depth 10
+
+[engines]
+smtbmc
+
+[script]
+prove: read_verilog -formal -sv chk_fsm_state.sv dut_fsm.sv fsm_formal_top.sv
+bug:   read_verilog -D BUG -formal -sv chk_fsm_state.sv dut_fsm.sv fsm_formal_top.sv
+prep -top fsm_formal_top
+
+[files]
+../../chk_lib/common/chk_bitops.svh
+../../chk_lib/formal/chk_macros.svh
+../../chk_lib/checkers/chk_fsm_state.sv
+dut_fsm.sv
+fsm_formal_top.sv
