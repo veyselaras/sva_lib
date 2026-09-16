@@ -25,6 +25,7 @@ prep -top fsm_formal_top
 ../../chk_lib/common/chk_bitops.svh
 ../../chk_lib/common/chk_past.svh
 ../../chk_lib/common/chk_reset.svh
+../../chk_lib/common/chk_role.svh
 ../../chk_lib/formal/chk_macros.svh
 ../../chk_lib/checkers/chk_fsm_state.sv
 dut_fsm.sv

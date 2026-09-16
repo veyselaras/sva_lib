@@ -3,6 +3,7 @@
 `include "chk_bitops.svh"
 `include "chk_past.svh"
 `include "chk_reset.svh"
+`include "chk_role.svh"
 
 // ---- Tek darbelik kurallar ----
 `define CHK_ASSERT(lbl, clk, dis, cond) \
@@ -13,6 +14,8 @@
   lbl: cover property (@(posedge clk) disable iff (dis) (cond));
 `define CHK_NO_X(lbl, clk, dis, sig) \
   lbl: assert property (@(posedge clk) disable iff (dis) !$isunknown(sig)) else $error("[CHK] X: %m");
+`define CHK_NO_X_IF(lbl, clk, dis, en, sig) \
+  lbl: assert property (@(posedge clk) disable iff (dis) (en) |-> !$isunknown(sig)) else $error("[CHK] X: %m");
 
 // ---- $past kullanan kurallar (CHK_PAST_VALID_DECL gerekir) ----
 // Not: standart, disable iff içinde $past kullanımını yasaklar; bu yüzden şart öncülde

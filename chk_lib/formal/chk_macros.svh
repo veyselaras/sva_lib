@@ -3,6 +3,7 @@
 `include "chk_bitops.svh"
 `include "chk_past.svh"
 `include "chk_reset.svh"
+`include "chk_role.svh"
 
 // ---- Tek darbelik kurallar ----
 `define CHK_ASSERT(lbl, clk, dis, cond) always @(posedge clk) if (!(dis)) lbl: assert (cond);
@@ -11,6 +12,7 @@
 
 // Formal 2 durumludur, X kontrolü yok: bilerek boş
 `define CHK_NO_X(lbl, clk, dis, sig)
+`define CHK_NO_X_IF(lbl, clk, dis, en, sig)
 
 // ---- $past kullanan kurallar (CHK_PAST_VALID_DECL gerekir) ----
 `define CHK_ASSERT_P(lbl, clk, dis, cond) always @(posedge clk) if (`CHK_PAST_OK(dis) && !(dis)) lbl: assert (cond);
