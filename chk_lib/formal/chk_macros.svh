@@ -2,6 +2,7 @@
 `define CHK_MACROS_SVH
 `include "chk_bitops.svh"
 `include "chk_past.svh"
+`include "chk_reset.svh"
 
 // ---- Tek darbelik kurallar ----
 `define CHK_ASSERT(lbl, clk, dis, cond) always @(posedge clk) if (!(dis)) lbl: assert (cond);
